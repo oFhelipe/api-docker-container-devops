@@ -4,3 +4,8 @@
 - Modulo de containers
 - Construção de Dockerfile para buildar a imagem do projeto
 - Construção de dockercompose a aplicação e do bando, utilizando de rede e volume
+
+Para rodar os containers rode o comando
+```
+  docker compose up
+```
