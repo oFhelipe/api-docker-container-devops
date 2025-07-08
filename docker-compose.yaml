@@ -1,0 +1,32 @@
+services:
+  postgres:
+    container_name: postgres-devops
+    image: postgres:17
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - devops-network
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/usr/src/app
+
+  api:
+    container_name: api-devops
+    build:
+      context: .
+    networks:
+      - devops-network
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+
+networks:
+  devops-network:
+    driver: bridge
+
+volumes:
+  db:
